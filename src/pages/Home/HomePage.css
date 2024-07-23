@@ -1,8 +1,9 @@
-* {
+.home-page {
 	font-family: Arial;
+	margin-left: 20px;
 }
 
 #cat-picture {
-	width: 600px;
+	width: 750px;
 	height: auto;
 }
