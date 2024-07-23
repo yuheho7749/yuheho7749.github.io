@@ -1,4 +1,4 @@
-import '../assets/styles/errorpage.css';
+import '../assets/styles/ErrorPage.css';
 
 function ErrorPage() {
 	return (
