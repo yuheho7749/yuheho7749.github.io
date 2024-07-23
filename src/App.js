@@ -3,9 +3,9 @@ import {
 	RouterProvider,
 } from "react-router-dom";
 
-import HomePage from './pages/HomePage';
-import ErrorPage from './pages/ErrorPage';
-import AboutReact from './pages/AboutReact';
+import HomePage from './pages/Home/HomePage';
+import ErrorPage from './pages/Error/ErrorPage';
+import AboutReactPage from './pages/AboutReact/AboutReactPage';
 
 const router = createBrowserRouter([
 	{
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/about-react",
-		element: <AboutReact />,
+		element: <AboutReactPage />,
 		errorElement: <ErrorPage />
 	},
 ]);

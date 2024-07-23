@@ -1,7 +1,7 @@
-import logo from '../assets/images/react-logo.svg';
-import '../assets/styles/AboutReact.css';
+import logo from 'assets/images/react-logo.svg';
+import './AboutReactPage.css';
 
-function AboutReact() {
+function AboutReactPage() {
 	return (
 		<div className="AboutReact">
 			<header className="AboutReact-header">
@@ -22,4 +22,4 @@ function AboutReact() {
 	);
 }
 
-export default AboutReact;
+export default AboutReactPage;
