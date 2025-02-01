@@ -7,7 +7,7 @@ order: 4
 <!-- > Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page. -->
 <!-- {: .prompt-tip } -->
 
-I'm Joseph, a Master's student in Computer Science at UC Santa Barbara researching AI applications in computer security. As part of the SecLab at UCSB, my work focuses on the intersection between AI and traditional computer security disciplines, such as using AI for binary and malware analysis. I also assist Shellphish on the AI Cyber Challenge (AIxCC). 
+I'm Joseph, a Master's student in Computer Science at UC Santa Barbara researching AI applications in computer security. As part of the [SecLab](https://seclab.cs.ucsb.edu/) at UCSB, my work focuses on the intersection between AI and traditional computer security disciplines, such as using AI for binary and malware analysis. I also assist [Shellphish](https://shellphish.net/) on the [AI Cyber Challenge (AIxCC)](https://aicyberchallenge.com/). 
 
 Outside of my research, I'm passionate about high performance and secure systems design, Linux development, and contributing to open-source projects. 
 
