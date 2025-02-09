@@ -11,6 +11,6 @@ I'm Joseph, a Master's student in Computer Science at UC Santa Barbara researchi
 
 Outside of my research, I'm passionate about high performance and secure systems design, Linux development, and contributing to open-source projects. 
 
-In my free time, I enjoy speedcubing -- solving the Rubik's Cube and other twisty puzzles as quickly as possible -- and occassionally compete in local competitions. I also enjoy developing and playing video games, along with adjusting hardware configurations to optimize performance.
+In my free time, I enjoy speedcubing -- solving the Rubik's Cube and other twisty puzzles as quickly as possible -- and occassionally competing in local competitions. I also enjoy developing and playing video games, along with adjusting hardware configurations to optimize performance.
 
 <!-- Maybe link resume? -->
