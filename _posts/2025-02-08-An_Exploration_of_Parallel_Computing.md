@@ -133,7 +133,7 @@ void count_function(float* a, long int size, int iterations) {
   }
 }
 ```
-Running the "good" version of the program, yields a much better result. Again, keeping the execution time at about 15 seconds, I observe over 30x increase in performance compared to the single-threaded baseline.
+Running the "good" version of the program yields a much better result. Keeping the execution time at about 15 seconds, I observe over 30x increase in performance compared to the single-threaded baseline.
 ![Desktop View](/assets/images/exploration-of-parallel-computing/good-simd-70.png){: width="500"}
 _Performance of running 70 iterations of the "good" workload_
 ![Desktop View](/assets/images/exploration-of-parallel-computing/good-simd-300.png){: width="500"}
