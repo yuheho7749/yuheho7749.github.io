@@ -26,11 +26,11 @@ To demonstrate single-thread processing in action and to use this as a baseline 
 ```c++
 // Single-threaded workload
 void count_function(float* a, long int size, int iterations) {
-	for (int j = 0; j < iterations; j++) {
-		for (int i = 0; i < size; i++) {
-			a[i] += 1;
-		}
-	}
+  for (int j = 0; j < iterations; j++) {
+    for (int i = 0; i < size; i++) {
+      a[i] += 1;
+    }
+  }
 }
 ```
 
@@ -41,9 +41,9 @@ void count_function(float* a, long int size, int iterations) {
 void count_function(float* a, long int size, int iterations) {
   for (int i = 0; i < size; i++) {
     for (int j = 0; j < iterations; j++) {
-			a[i] += 1;
-		}
-	}
+      a[i] += 1;
+    }
+  }
 }
 ```
 
@@ -113,11 +113,11 @@ Hmm...the results improved from before, but not by much. Why is that? Remember I
 ```c++
 // "Bad" workload
 void count_function(float* a, long int size, int iterations) {
-	for (int j = 0; j < iterations; j++) {
-		for (int i = 0; i < size; i++) {
-			a[i] += 1;
-		}
-	}
+  for (int j = 0; j < iterations; j++) {
+    for (int i = 0; i < size; i++) {
+      a[i] += 1;
+    }
+  }
 }
 ```
 But why is this bad? My hypothesis is that the "bad" workload written in a way that destroys spacial cache locality. For each iteration, the inner loop is going through all `X` number of elements where `X >> size of the data cache` in the CPU. This means that the data cache is constantly flushed and reloaded from memory due to cache misses, which is slow.
@@ -128,9 +128,9 @@ The alternative workload shown below prevents this by operating on each element 
 void count_function(float* a, long int size, int iterations) {
   for (int i = 0; i < size; i++) {
     for (int j = 0; j < iterations; j++) {
-			a[i] += 1;
-		}
-	}
+      a[i] += 1;
+    }
+  }
 }
 ```
 Running the "good" version of the program, yields a much better result. Again, keeping the execution time at about 15 seconds, I observe over 30x increase in performance compared to the single-threaded baseline.
@@ -164,14 +164,14 @@ Below is a code snippet of the example workload written using [Heterogeneous-com
 #define NUM 1000000000
 
 __global__ void count_kernel(float* a, long int size, int iterations) {
-	long int tid = blockIdx.x * blockDim.x + threadIdx.x;
-	
-	// Check to make sure no out of bounds access
-	if (tid < size) {
-		for (int i = 0; i < iterations; i++) {
-			a[tid] += 1;
-		}
-	}
+  long int tid = blockIdx.x * blockDim.x + threadIdx.x;
+
+  // Check to make sure no out of bounds access
+  if (tid < size) {
+    for (int i = 0; i < iterations; i++) {
+      a[tid] += 1;
+    }
+  }
 }
 
 int main() {
