@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Site Under Construction
-date: 02-01-2025
+title: Migrating Website
+date: 01-02-2025
 categories: [Documentation]
 ---
 
-Please come back later :(
+I am currently migrating from my old website. Please be patient if certain pages or blogs are missing.
