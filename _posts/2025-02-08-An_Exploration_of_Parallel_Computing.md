@@ -49,7 +49,7 @@ void count_function(float* a, long int size, int iterations) {
 
 In both versions of the single-threaded test, it took about 15-16 seconds to complete 10 iterations. This will be the baseline of my comparison moving forward.
 
-![Desktop View](/assets/images/exploration-of-parallel-computing/single-threaded-benchmark.png){: width="500"}
+![Desktop View](/assets/posts/exploration-of-parallel-computing/single-threaded-benchmark.png){: width="500"}
 _Single-threaded benchmark using 10 iterations_
 
 > It is important to verify the assembly instructions emitted by the compiler to ensure no fancy shortcuts are used to compute the simulated workload. For example, a compiler optimization might be to compute one element and then apply it to the other elements.
@@ -77,7 +77,7 @@ int main() {
 }
 ```
 
-![Desktop View](/assets/images/exploration-of-parallel-computing/multi-threaded-benchmark-10.png){: width="500"}
+![Desktop View](/assets/posts/exploration-of-parallel-computing/multi-threaded-benchmark-10.png){: width="500"}
 _Multi-threaded benchmark using 10 iterations_
 
 > The `CPU time` measured is the sum of the processing time used by all threads. The `real` time give a more accurate estimate of the execution time. Moving forward, all comparisons will use the `real` time.
@@ -85,7 +85,7 @@ _Multi-threaded benchmark using 10 iterations_
 
 Using multi-threading on a 6 core 12 threads Zen 4 processor, it takes about 3 seconds to complete the same workload. If I were to keep the processing time constant (see below), the multi-threaded program is able to process about 7 times more!
 
-![Desktop View](/assets/images/exploration-of-parallel-computing/multi-threaded-benchmark-70.png){: width="500"}
+![Desktop View](/assets/posts/exploration-of-parallel-computing/multi-threaded-benchmark-70.png){: width="500"}
 _Multi-threaded benchmark using 70 iterations_
 
 > Please note that there are overhead associated with launching and joining threads. Also, [Hyper-threading](https://en.wikipedia.org/wiki/Hyper-threading)/[SMT](https://en.wikipedia.org/wiki/Simultaneous_multithreading) do not exactly double the performance. Therefore, the total speed-up is not 12 times faster.
@@ -106,7 +106,7 @@ Writing or transforming a program to use SIMD instructions is easy. Assuming the
 
 Here, I recompiled the multi-threaded program using the `-mavx512f` option.
 
-![Desktop View](/assets/images/exploration-of-parallel-computing/bad-simd-70.png){: width="500"}
+![Desktop View](/assets/posts/exploration-of-parallel-computing/bad-simd-70.png){: width="500"}
 _Performance of running 70 iterations of the "bad" workload_
 
 Hmm...the results improved from before, but not by much. Why is that? Remember I mentioned there are two versions of the single-threaded workload? The result shown is using the unmodified workload, where the outer loop is the iterations and inner loop accesses the elements. As a refresher, here it is again:
@@ -134,17 +134,17 @@ void count_function(float* a, long int size, int iterations) {
 }
 ```
 Running the "good" version of the program yields a much better result. Keeping the execution time at about 15 seconds, I observe over 30x increase in performance compared to the single-threaded baseline.
-![Desktop View](/assets/images/exploration-of-parallel-computing/good-simd-70.png){: width="500"}
+![Desktop View](/assets/posts/exploration-of-parallel-computing/good-simd-70.png){: width="500"}
 _Performance of running 70 iterations of the "good" workload_
-![Desktop View](/assets/images/exploration-of-parallel-computing/good-simd-300.png){: width="500"}
+![Desktop View](/assets/posts/exploration-of-parallel-computing/good-simd-300.png){: width="500"}
 _Performance of running 300 iterations of the "good" workload_
 
 #### Verifying the Cache Locality Hypothesis:
 On Linux, the `perf` utility can be used to measure performance metrics of a program. Using the command `perf stat -d time <program>`, I can measure some cache behaviors.
 
-![Desktop View](/assets/images/exploration-of-parallel-computing/cache-locality-good.png){: width="800"}
+![Desktop View](/assets/posts/exploration-of-parallel-computing/cache-locality-good.png){: width="800"}
 _Cache behavior of the "good" workload_
-![Desktop View](/assets/images/exploration-of-parallel-computing/cache-locality-bad.png){: width="800"}
+![Desktop View](/assets/posts/exploration-of-parallel-computing/cache-locality-bad.png){: width="800"}
 _Cache behavior of the "bad" workload_
 
 Notice the `L1-dcache-load-misses` for the "bad" workload is significantly higher as expected. More evidence is needed, but preliminary results seem to support my hypothesis.
@@ -186,15 +186,15 @@ int main() {
 }
 ```
 The result for a 300 iteration run on the GPU is shown below:
-![Desktop View](/assets/images/exploration-of-parallel-computing/gpu-300.png){: width="500"}
+![Desktop View](/assets/posts/exploration-of-parallel-computing/gpu-300.png){: width="500"}
 _300 iterations on the GPU_
 > The GPU is so fast in computation that the data transfer time to and from the GPU is the dominating factor.
 {: .prompt-info}
 
 To get more accurate measurements, I increased the number of iterations to 10000 and 25000.
-![Desktop View](/assets/images/exploration-of-parallel-computing/gpu-10000.png){: width="500"}
+![Desktop View](/assets/posts/exploration-of-parallel-computing/gpu-10000.png){: width="500"}
 _10000 iterations on the GPU_
-![Desktop View](/assets/images/exploration-of-parallel-computing/gpu-25000.png){: width="500"}
+![Desktop View](/assets/posts/exploration-of-parallel-computing/gpu-25000.png){: width="500"}
 _25000 iterations on the GPU_
 
 ## Results:
