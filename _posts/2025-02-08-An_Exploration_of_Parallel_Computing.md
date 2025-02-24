@@ -204,7 +204,7 @@ Comparing the baseline single-threaded CPU performance with the GPU-accelerated 
 
 2. **Optimization Efforts**: It is essential to have effective optimization of code to take full advantage of GPU features, such as shared memory and optimized data access patterns. A vram/cache bottleneck similar to the cache locality problem on the CPU can also be observed on the GPU. The vram experimental program/data is omitted because of it's similarity to the CPU cache locality problem.
 
-3. **Measurement Contexts**: The performance improvement was measured in terms of time taken to complete a task, indicating a significant reduction in computation time when using the GPU. However, it is important to note that the GPUs can consume significantly more power. While still very impressive, the performance gained per power consumed is only about 800x in this set of experiments.
+3. **Measurement Contexts**: The performance improvement was measured in terms of time taken to complete a task, indicating a significant reduction in computation time when using the GPU. However, it is important to note that GPUs can consume significantly more power. While still very impressive, the performance gained per power consumed is only about 800x (instead of 2500x) in this set of experiments.
 
 While this exploration highlights the potential of GPU acceleration, it is important to interpret these results with appropriate context. For any workload, it must be viewed within the broader context of application suitability, optimization efforts, and measurement contexts.
 
